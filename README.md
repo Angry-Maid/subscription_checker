@@ -19,7 +19,7 @@ First steps is ensuring you have right versions of python, at least 3.6+ for `se
 Steps:
 1. Cloning this repo:
     ```bash
-    $ git clone $repo_url
+    $ git clone https://github.com/Angry-Maid/subscription_checker.git
     ```
 2. Creating enviroment and installing requirements
     ```bash
