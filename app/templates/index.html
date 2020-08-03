@@ -2,6 +2,18 @@
 
 {% block content %}
     <div class="row">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <div class="row">
         <a class="btn btn-outline-dark" href="{{ url_for('subscription') }}">Add Subscription</a>
     </div>
 
@@ -13,23 +25,25 @@
                     <th scope="col">Name</th>
                     <th scope="col">Cost</th>
                     <th scope="col">Currency</th>
-                    <th scope="col">BYN</th>
+                    <th scope="col">{{ local_currency }}</th>
                     <th scope="col">Billing Date</th>
                     <th scope="col">Update</th>
                     <th scope="col">Delete</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th></th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                {% for sub in subscriptions %}
+                    <tr>
+                        <th>{{ sub['id'] }}</th>
+                        <td>{{ sub['name'] }}</td>
+                        <td>{{ sub['cost'] }}</td>
+                        <td>{{ sub['currency'] }}</td>
+                        <td>{{ sub[local_currency] | round(2, 'floor') }}</td>
+                        <td>{{ sub['billing_date'] }}</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>

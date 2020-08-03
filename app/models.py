@@ -10,3 +10,12 @@ class Subscription(db.Model):
 
     def __repr__(self):
         return '<Subscription {};{}>'.format(self.id, self.name)
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'cost': self.cost,
+            'currency': self.currency,
+            'billing_date': self.billing_date
+        }

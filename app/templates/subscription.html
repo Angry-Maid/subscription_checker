@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h3>Subscription</h3>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.name.label }}<br>
+            {{ form.name(size=32) }}
+        </p>
+        <p>
+            {{ form.cost.label }}<br>
+            {{ form.cost(size=32) }}
+        </p>
+        <p>
+            {{ form.currency.label }}<br>
+            {{ form.currency() }}
+        </p>
+        <p>
+            {{ form.billing_date.label }}<br>
+            {{ form.billing_date(size=32) }}
+        </p>
+        <p>
+            {{ form.submit() }}
+        </p>
+    </form>
+{% endblock %}
