@@ -32,13 +32,14 @@ def index():
         {
             **sub.to_dict(),
             local_currency: sub.cost * exchange_rates[f'{sub.currency}_{local_currency}'] if sub.currency != local_currency else '-'
-        } for sub in Subscription.query.all()
+        } for sub in Subscription.query.order_by(Subscription.billing_date, Subscription.id).all()
     ]
 
     return render_template(
         'index.html',
         subscriptions=subs,
-        local_currency=local_currency
+        local_currency=local_currency,
+        total_local=sum(map(lambda x: x[local_currency] if x[local_currency] != '-' else 0, subs))
     )
 
 
@@ -60,3 +61,15 @@ def subscription():
         flash(f'Added \'{form.name.data}\' to subscriptions')
         return redirect(url_for('index'))
     return render_template('subscription.html', form=form)
+
+
+@app.route('/delete/<_id>')
+def delete(_id):
+    sub = Subscription.query.filter_by(id=_id).first_or_404()
+
+    flash(f'Deleted \'{sub.name}\' from subscriptions')
+
+    db.session.delete(sub)
+    db.session.commit()
+
+    return redirect(url_for('index'))

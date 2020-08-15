@@ -41,9 +41,19 @@
                         <td>{{ sub[local_currency] | round(2, 'floor') }}</td>
                         <td>{{ sub['billing_date'] }}</td>
                         <td></td>
-                        <td></td>
+                        <td><a class="btn btn-danger" href="{{ url_for('delete', _id=sub['id']) }}">Delete</a></td>
                     </tr>
                 {% endfor %}
+                <tr>
+                    <th>Total</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>{{ total_local | round(2, 'floor') }}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
             </tbody>
         </table>
     </div>
