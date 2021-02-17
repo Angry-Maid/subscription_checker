@@ -13,7 +13,7 @@
         {% endwith %}
     </div>
 
-    <div class="row">
+    <div class="row" style="padding-bottom: 15px;">
         <a class="btn btn-outline-dark" href="{{ url_for('subscription') }}">Add Subscription</a>
     </div>
 
@@ -28,7 +28,7 @@
                     <th scope="col">{{ local_currency }}</th>
                     <th scope="col">Billing Date</th>
                     <th scope="col">Active</th>
-                    <th scope="col">Update</th>
+                    <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
                 </tr>
             </thead>
@@ -41,8 +41,8 @@
                         <td>{{ sub['currency'] }}</td>
                         <td>{{ sub[local_currency] | round(2, 'floor') }}</td>
                         <td>{{ sub['billing_date'] }}</td>
-                        <td><a href="{{ url_for('switch_active', _id=sub['id']) }}">{{ 'Active' if sub['active'] else 'Disabled' }}</a></td>
-                        <td><a class="btn" href="{{ url_for('edit', _id=sub['id']) }}">Edit</a></td>
+                        <td><a class="btn btn-info" href="{{ url_for('switch_active', _id=sub['id']) }}">{{ 'Active' if sub['active'] else 'Disabled' }}</a></td>
+                        <td><a class="btn btn-warning" href="{{ url_for('edit', _id=sub['id']) }}">Edit</a></td>
                         <td><a class="btn btn-danger" href="{{ url_for('delete', _id=sub['id']) }}">Delete</a></td>
                     </tr>
                 {% endfor %}
