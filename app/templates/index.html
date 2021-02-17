@@ -39,7 +39,7 @@
                         <td>{{ sub['name'] }}</td>
                         <td>{{ sub['cost'] }}</td>
                         <td>{{ sub['currency'] }}</td>
-                        <td>{{ sub[local_currency] | round(2, 'floor') }}</td>
+                        <td style="color: {{ 'green' if sub['active'] else 'red' }}">{{ sub[local_currency] | round(2, 'floor') }}</td>
                         <td>{{ sub['billing_date'] }}</td>
                         <td><a class="btn btn-info" href="{{ url_for('switch_active', _id=sub['id']) }}">{{ 'Active' if sub['active'] else 'Disabled' }}</a></td>
                         <td><a class="btn btn-warning" href="{{ url_for('edit', _id=sub['id']) }}">Edit</a></td>

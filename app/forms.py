@@ -11,7 +11,7 @@ from wtforms.validators import (
 from app import app
 
 
-class AddSubscriptionForm(FlaskForm):
+class SubscriptionForm(FlaskForm):
     name = StringField('Name', [InputRequired(), ])
     cost = DecimalField('Cost', [InputRequired(), ])
     currency = SelectField('Currency', choices=[
