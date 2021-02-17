@@ -7,9 +7,10 @@ class Subscription(db.Model):
     cost = db.Column(db.Float)
     currency = db.Column(db.String(32))
     billing_date = db.Column(db.Integer)
+    active = db.Column(db.Boolean)
 
     def __repr__(self):
-        return '<Subscription {};{}>'.format(self.id, self.name)
+        return '<Subscription {}:{}>'.format(self.id, self.name)
 
     def to_dict(self):
         return {
@@ -17,5 +18,6 @@ class Subscription(db.Model):
             'name': self.name,
             'cost': self.cost,
             'currency': self.currency,
-            'billing_date': self.billing_date
+            'billing_date': self.billing_date,
+            'active': self.active
         }

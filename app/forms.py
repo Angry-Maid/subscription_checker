@@ -15,7 +15,7 @@ class AddSubscriptionForm(FlaskForm):
     name = StringField('Name', [InputRequired(), ])
     cost = DecimalField('Cost', [InputRequired(), ])
     currency = SelectField('Currency', choices=[
-        (symbol.upper(), symbol.upper()) for symbol in app.config['SYMBOLS'].split(',')
+        (symbol.upper(), ) * 2 for symbol in app.config['SYMBOLS'].split(',')
     ])
     billing_date = IntegerField('Billing Day', [InputRequired(), NumberRange(min=1, max=31)])
-    submit = SubmitField('Add Subscription')
+    submit = SubmitField('Save')

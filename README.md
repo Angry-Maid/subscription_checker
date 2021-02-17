@@ -10,8 +10,8 @@ This project was done with help of first four chapters of [Miguel's Flask Mega-T
 Current list of features(done/not done):
 - [x] Add service
 - [x] Convert currencies to local currency
-- [ ] Edit added services
-- [ ] Delete added services
+- [X] Edit added services
+- [x] Delete added services
 
 ## Installation
 First steps is ensuring you have right versions of python, at least 3.6+ for `secrets` std-library (not necessary)
